@@ -8,6 +8,7 @@ public class Principal {
 			JFMenu frame = new JFMenu();
 			
 			
+			
 	}
 
 }

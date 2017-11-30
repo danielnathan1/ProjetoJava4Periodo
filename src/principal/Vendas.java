@@ -10,6 +10,25 @@ public class Vendas {
 	private Date data;
 	private ArrayList<Produto> produtos = new ArrayList<>();
 	
+	
+	public void fazendoVenda(){
+		
+		Produto p = new Produto();
+		
+		
+		produtos.add(p);
+		
+		System.out.println("");
+		
+		/*
+		 * if()
+		 * 		fazendoVenda(Produto p);
+		 */
+		
+	}
+	
+	
+	
 	public int getNotafiscal() {
 		return notafiscal;
 	}

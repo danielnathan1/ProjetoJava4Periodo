@@ -18,6 +18,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
 import javax.swing.border.BevelBorder;
+import java.awt.Toolkit;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 public class JMenuFrame extends JFrame {
 
@@ -32,47 +35,66 @@ public class JMenuFrame extends JFrame {
 	 * Create the frame.
 	 */
 	public JMenuFrame() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\danie\\Documents\\faculdade\\P4\\Java avancado\\Mercado\\src\\interfacegrafica\\icone.png"));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 530);
 		contentPane = new JPanel();
 		contentPane.setBorder(null);
-		contentPane.setBackground(new Color(0, 102, 255));
+		contentPane.setBackground(new Color(102, 102, 51));
 		setContentPane(contentPane);
 		
-		JButton btnNewButton = new JButton("VENDA");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnRegistro = new JButton("REGISTRO");
+		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnNewButton.setAction(action);
-		
-		JButton btnRegistro = new JButton("REGISTRO");
 		
 		JButton btnConsulta = new JButton("CONSULTA");
 		
 		JButton btnSair = new JButton("SAIR");
+		
+		JLabel lblNewLabel = new JLabel("MENU\r\n");
+		lblNewLabel.setBackground(new Color(51, 153, 51));
+		
+		JButton btnNewButton = new JButton("VENDA");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(btnSair)
-						.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnRegistro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnConsulta))
-					.addContainerGap(679, Short.MAX_VALUE))
+					.addComponent(btnSair)
+					.addContainerGap(717, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(216)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 351, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(219, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnConsulta, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
+					.addGap(683))
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+						.addComponent(btnRegistro, GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+					.addGap(683))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(192)
-					.addComponent(btnNewButton)
+					.addContainerGap()
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+					.addGap(51)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(btnRegistro)
 					.addGap(18)
 					.addComponent(btnConsulta)
-					.addPreferredGap(ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
 					.addComponent(btnSair)
 					.addGap(28))
 		);
