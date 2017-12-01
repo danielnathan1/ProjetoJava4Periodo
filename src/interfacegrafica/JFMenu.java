@@ -18,19 +18,11 @@ public class JFMenu extends JFrame{
 	private JButton btvenda, btresgitro, btconsulta, btsair;
 	private JLabel lbTitulo;
 	
-	public JFMenu(){
+	public JFMenu(Container c){
 		//titulo
 		super("MERCADO");
 		
-		
-		//conteiner
-		Container c = this.getContentPane();
-		c.setLayout(null);
-		c.setBackground(new Color(102, 102, 51));
-	
-		//frame
-		
-			//dimensoes
+		//dimensoes
 		setBounds(10, 100, 800, 600);
 			//a pagina podera ser fechada
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -44,49 +36,48 @@ public class JFMenu extends JFrame{
 		ImageIcon icone = new ImageIcon("C:\\Users\\danie\\Documents\\faculdade\\P4\\Java avancado\\Mercado\\src\\interfacegrafica\\imagens\\icone.png");
 		setIconImage(icone.getImage());
 		
-		//Label POR ALGUM MOTIVO N TA FUNCIONANDO
+		//conteiner
+		
+		 c = this.getContentPane();
+		 c.setLayout(null);
+		 c.setBackground(new Color(102, 102, 51));
+		 
+		//panel
+		//panel.setBounds(10, 100, 800, 600);
+		//panel.setLayout(null);
+		//panel.setBackground(new Color(102, 102, 51));
+	
+		//frame
+		
 	
 		
-		
-		//botoes
-		criarButoes(c);
-		criarlabel(c);
-		
-	}
-	private void criarButoes(Container c){
-		
-		//botoes
-		this.btvenda = new JButton("Venda");
-		this.btresgitro = new JButton("Registro");
-		this.btconsulta = new JButton("Consulta");
-		this.btsair = new JButton("Sair");
-		
-		//largura e lugar onde sera posicionado
-		this.btvenda.setBounds(20, 230, 100, 30);
-		this.btresgitro.setBounds(20, 280, 100, 30);
-		this.btconsulta.setBounds(20, 330, 100, 30);
-		this.btsair.setBounds(20, 520, 100, 30);
-		
 		//adicionando o ouvinte aos botoes
-		this.btvenda.addActionListener(this.ouvintebt);
-		this.btresgitro.addActionListener(this.ouvintebt);
-		this.btconsulta.addActionListener(this.ouvintebt);
-		this.btsair.addActionListener(this.ouvintebt);
-		
+		//this.btvenda.addActionListener(this.ouvintebt);
+		//this.btresgitro.addActionListener(this.ouvintebt);
+		//this.btconsulta.addActionListener(this.ouvintebt);
+		//this.btsair.addActionListener(this.ouvintebt);
+	
 		//definindo comandos associado
 		
-		this.btvenda.setActionCommand("venda");
-		this.btresgitro.setActionCommand("registro");
-		this.btconsulta.setActionCommand("consulta");
-		this.btsair.setActionCommand("sair");
+		//this.btvenda.setActionCommand("venda");
+		//this.btresgitro.setActionCommand("registro");
+		//this.btconsulta.setActionCommand("consulta");
+		//this.btsair.setActionCommand("sair");
 		
-		
+			
 		//adicionando os botoes ao container
-		c.add(this.btvenda);
-		c.add(this.btresgitro);
-		c.add(this.btconsulta);
-		c.add(this.btsair);
+		//this.panel.add(this.btvenda);
+		//this.panel.add(this.btresgitro);
+		//this.panel.add(this.btconsulta);
+		//this.panel.add(this.btsair);
+			
+		//c.add(panel);
+		//criarlabel(c);
 		
+	}
+	private void mundarPanel(Container c, JPanel novoPanel){
+		c.removeAll();
+		c.add(novoPanel);
 		
 		
 	}

@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * essa eh uma classe ouvinte para tratar os eventos promovidos pelos butoes
  */
 public class Ouvintebt1 implements ActionListener{
-
+	JButton jb = new JButton("");
 	@Override
 	public void actionPerformed(ActionEvent evento) {
 		
