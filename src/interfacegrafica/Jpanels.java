@@ -9,15 +9,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 
 public class Jpanels extends JFrame{
 	
-	public JPanel JmenuPrincpal = new JPanel();
+	public Font font = new Font("ARIAL", Font.BOLD, 20);
+	public JPanel jMenuPrincpal = new JPanel();
+	public JPanel jVenda = new JPanel();
+	public JPanel jRegistro = new JPanel();
 	public String controle;
 	
 	
@@ -30,9 +36,61 @@ public class Jpanels extends JFrame{
 		this.controle = controle;
 	}
 
-
+	public JPanel mudarParaRegistro(){
+		JLabel jTitulo = new JLabel("REGISTRO");
+		jTitulo.setBounds(300, 0, 200, 20);
+		jTitulo.setFont(font);
+		jTitulo.setForeground(Color.BLACK);
+		jTitulo.setToolTipText("REGISTRO");
+		
+		JTextArea txareaCodigo = new JTextArea("Codigo");
+		JTextArea txareaNome = new JTextArea("Nome");
+		JTextArea txareaDescricao = new JTextArea("Descricao");
+		JTextArea txareaValor = new JTextArea("Valor");
+		
+		
+		
+		
+		jRegistro.setLayout(null);
+		jRegistro.setBounds(10, 100, 800, 600);
+		jRegistro.setBackground(new Color(102,102,51));
+		
+		//textfield
+		JTextField txCodigo = new JTextField(20);
+		JTextField txNome = new JTextField(20);
+		JTextField txDescricao = new JTextField(20);
+		JTextField txValor = new JTextField(20);
+		
+		//botoes
+		JButton btregistrar = new JButton("Registrar");
+		JButton btlimpar = new JButton("limpar");
+		
+		
+		btregistrar.setBounds(200, 410, 100, 20);
+		btlimpar.setBounds(400, 410, 100, 20);
+		
+		txCodigo.setBounds(200, 80, 300, 20);
+		txCodigo.setToolTipText("Codigo");
+		txNome.setBounds(200, 120, 300, 20);
+		txNome.setToolTipText("Nome");
+		txDescricao.setBounds(200, 170, 300, 40);
+		txDescricao.setToolTipText("Descricao");
+		txValor.setBounds(200, 240, 300, 20);
+		txValor.setToolTipText("valor");
+		
+		jRegistro.add(jTitulo);
+		
+		jRegistro.add(btregistrar);
+		jRegistro.add(btlimpar);
+		
+		jRegistro.add(txCodigo);
+		jRegistro.add(txNome);
+		jRegistro.add(txDescricao);
+		jRegistro.add(txValor);
+		
+		return jRegistro;
+	}
 	public JPanel mudarParaMenu(){
-		Font font = new Font("ARIAL", Font.BOLD, 20);
 		JLabel jTitulo = new JLabel("MENU PRINCIPAL");
 		jTitulo.setBounds(300, 0, 200, 20);
 		jTitulo.setFont(font);
@@ -43,9 +101,9 @@ public class Jpanels extends JFrame{
 		
 		
 		
-		JmenuPrincpal.setLayout(null);
-		JmenuPrincpal.setBounds(10, 100, 800, 600);
-		JmenuPrincpal.setBackground(new Color(102, 102, 51));
+		jMenuPrincpal.setLayout(null);
+		jMenuPrincpal.setBounds(10, 100, 800, 600);
+		jMenuPrincpal.setBackground(new Color(102, 102, 51));
 		
 		
 		JButton btvenda = new JButton("Venda");
@@ -133,12 +191,15 @@ public class Jpanels extends JFrame{
 			}
 		
 		});
-		JmenuPrincpal.add(btvenda);
-		JmenuPrincpal.add(btresgitro);
-		JmenuPrincpal.add(btconsulta);
-		JmenuPrincpal.add(btsair);
-		JmenuPrincpal.add(jTitulo);
-		return JmenuPrincpal;
+		jMenuPrincpal.add(btvenda);
+		jMenuPrincpal.add(btresgitro);
+		jMenuPrincpal.add(btconsulta);
+		jMenuPrincpal.add(btsair);
+		jMenuPrincpal.add(jTitulo);
+		
+		return jMenuPrincpal;
 	}
+	
+	
 
 }

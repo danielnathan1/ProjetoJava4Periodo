@@ -75,7 +75,11 @@ public class JFMenu extends JFrame{
 		//criarlabel(c);
 		
 	}
-	private void mundarPanel(Container c, JPanel novoPanel){
+	public void mudarPanel(Container c, JPanel novoPanel){
+		c = this.getContentPane();
+		c.setLayout(null);
+		c.setBackground(new Color(102, 102, 51));
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		c.removeAll();
 		c.add(novoPanel);
 		

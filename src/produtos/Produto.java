@@ -3,7 +3,6 @@ package produtos;
 public class Produto {
 	
 	private int codigo;
-	private String tipo;
 	private String nome;
 	private String descricao;
 	public float preco;
@@ -35,16 +34,5 @@ public class Produto {
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	
-	
-	
 
 }

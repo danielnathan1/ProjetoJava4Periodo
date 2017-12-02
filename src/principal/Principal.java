@@ -11,7 +11,11 @@ import interfacegrafica.Jpanels;
 
 public class Principal {
 	public static void main(String[] args) {
+			
+			String controleDeSwi = "1";
 		
+		
+			
 			//container
 			Container c = new Container();
 			c.setBounds(10, 100, 800, 600);
@@ -25,11 +29,25 @@ public class Principal {
 			JFMenu frame = new JFMenu(c);
 			frame.add(c);
 			
-			while(true){
-				if(paineis.getControle()=="venda"){
-					System.out.println("aqui");
-				}else{
-					System.out.println(paineis.getControle());
+			
+			while(controleDeSwi == "1"){
+				System.out.println();
+				if(paineis.getControle()!= null){
+					switch (paineis.getControle()) {
+					case "registro":
+						controleDeSwi = "0";
+						frame.mudarPanel(c, paineis.mudarParaRegistro());
+	
+						
+						break;
+	
+					default:
+						break;
+					}
+					if(paineis.getControle() == "registro"){
+						frame.mudarPanel(c, paineis.mudarParaRegistro());
+					}
+
 				}
 			}
 			
