@@ -17,14 +17,21 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import produtos.Produto;
+
 
 public class Jpanels extends JFrame{
 	
+	//fonte padrao
 	public Font font = new Font("ARIAL", Font.BOLD, 20);
+	//paineis para troca de tela
 	public JPanel jMenuPrincpal = new JPanel();
 	public JPanel jVenda = new JPanel();
 	public JPanel jRegistro = new JPanel();
+	//variavel de controle de troca de telas
 	public String controle;
+	//objetos que irao retornar
+	public Produto produto = new Produto();
 	
 	
 	public String getControle() {
@@ -37,16 +44,18 @@ public class Jpanels extends JFrame{
 	}
 
 	public JPanel mudarParaRegistro(){
+		
+		
 		JLabel jTitulo = new JLabel("REGISTRO");
 		jTitulo.setBounds(300, 0, 200, 20);
 		jTitulo.setFont(font);
 		jTitulo.setForeground(Color.BLACK);
 		jTitulo.setToolTipText("REGISTRO");
 		
-		JTextArea txareaCodigo = new JTextArea("Codigo");
-		JTextArea txareaNome = new JTextArea("Nome");
-		JTextArea txareaDescricao = new JTextArea("Descricao");
-		JTextArea txareaValor = new JTextArea("Valor");
+		JLabel txareaCodigo = new JLabel("Codigo:");
+		JLabel txareaNome = new JLabel("Nome:");
+		JLabel txareaDescricao = new JLabel("Descricao:");
+		JLabel txareaValor = new JLabel("Valor:");
 		
 		
 		
@@ -61,14 +70,20 @@ public class Jpanels extends JFrame{
 		JTextField txDescricao = new JTextField(20);
 		JTextField txValor = new JTextField(20);
 		
+		txCodigo.setText("");
+		txNome.setText("");
+		txDescricao.setText("");
+		txValor.setText("");
+		
 		//botoes
 		JButton btregistrar = new JButton("Registrar");
 		JButton btlimpar = new JButton("limpar");
 		
 		
-		btregistrar.setBounds(200, 410, 100, 20);
-		btlimpar.setBounds(400, 410, 100, 20);
+		btregistrar.setBounds(200, 310, 100, 20);
+		btlimpar.setBounds(400, 310, 100, 20);
 		
+		//campos para preeencher
 		txCodigo.setBounds(200, 80, 300, 20);
 		txCodigo.setToolTipText("Codigo");
 		txNome.setBounds(200, 120, 300, 20);
@@ -77,6 +92,62 @@ public class Jpanels extends JFrame{
 		txDescricao.setToolTipText("Descricao");
 		txValor.setBounds(200, 240, 300, 20);
 		txValor.setToolTipText("valor");
+		
+		//indicacoes dos campos
+		txareaCodigo.setBounds(150, 80, 300, 15);
+		txareaNome.setBounds(150, 120, 300, 15);
+		txareaDescricao.setBounds(130, 170, 300, 15);
+		txareaValor.setBounds(150, 240, 300, 15);
+		//cores
+		
+		//cores
+		txareaCodigo.setForeground(Color.BLACK);
+		txareaNome.setForeground(Color.BLACK);
+		txareaDescricao.setForeground(Color.BLACK);
+		txareaValor.setForeground(Color.BLACK);
+		
+		
+		btlimpar.setActionCommand("limpar");
+		btlimpar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() instanceof JButton){
+					if(e.getActionCommand().equals("limpar")){
+						txCodigo.setText("");
+						txNome.setText("");
+						txDescricao.setText("");
+						txValor.setText("");
+					}
+				}
+				
+				
+			}
+		});
+		
+		btregistrar.setActionCommand("registrar");
+		btregistrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource() instanceof JButton){
+					if(!txCodigo.getText().equals("") && !txNome.getText().equals("") && !txDescricao.getText().equals("") && !txValor.getText().equals("")){
+						produto.setCodigo(Integer.parseInt(txCodigo.getText()));
+						produto.setNome(txNome.getText());
+						produto.setDescricao(txDescricao.getText());
+						produto.setPreco(new Float(txValor.getText()).floatValue());
+						JOptionPane.showMessageDialog(null, "OBRIGADO POR USAR O PROGRAMA");
+						
+					}else{
+						JOptionPane.showMessageDialog(null, "POR FAVOR, PREENCHA TODOS OS CAMPOS");
+					}
+					
+				}
+			}
+		});
+		
+		
+		
 		
 		jRegistro.add(jTitulo);
 		
@@ -87,6 +158,11 @@ public class Jpanels extends JFrame{
 		jRegistro.add(txNome);
 		jRegistro.add(txDescricao);
 		jRegistro.add(txValor);
+		
+		jRegistro.add(txareaCodigo);
+		jRegistro.add(txareaNome);
+		jRegistro.add(txareaDescricao);
+		jRegistro.add(txareaValor);
 		
 		return jRegistro;
 	}

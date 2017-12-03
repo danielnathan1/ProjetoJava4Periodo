@@ -1,11 +1,22 @@
 package produtos;
 
-public class Produto {
+import java.io.Serializable;
+
+public class Produto implements Serializable {
 	
 	private int codigo;
 	private String nome;
 	private String descricao;
 	public float preco;
+	
+	
+	public void limparProduto(){
+		this.setCodigo(0);
+		this.setNome(null);
+		this.setDescricao(null);
+		this.setPreco(0);
+		
+	}
 	
 	
 	
