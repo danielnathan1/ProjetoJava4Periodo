@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -24,14 +25,26 @@ public class Jpanels extends JFrame{
 	
 	//fonte padrao
 	public Font font = new Font("ARIAL", Font.BOLD, 20);
+	
 	//paineis para troca de tela
 	public JPanel jMenuPrincpal = new JPanel();
 	public JPanel jVenda = new JPanel();
 	public JPanel jRegistro = new JPanel();
+	public JPanel jConsulta = new JPanel();
+	
+	
 	//variavel de controle de troca de telas
 	public String controle;
 	//objetos que irao retornar
 	public Produto produto = new Produto();
+	
+	//dado de consulta
+	public String consulta = "";
+	
+	
+	
+	//get and sets
+	
 	
 	
 	public String getControle() {
@@ -39,10 +52,92 @@ public class Jpanels extends JFrame{
 	}
 
 
+	public String getConsulta() {
+		return consulta;
+	}
+
+
+	public void setConsulta(String consulta) {
+		this.consulta = consulta;
+	}
+
+
 	public void setControle(String controle) {
 		this.controle = controle;
 	}
+	
+	
+	
+	
+	
+	public JPanel mudarParaVenda() {
+		
+		JLabel jTitulo = new JLabel("VENDA");
+		jTitulo.setBounds(300, 0, 200, 20);
+		jTitulo.setFont(font);
+		jTitulo.setForeground(Color.BLACK);
+		jTitulo.setToolTipText("VENDA");
+		
+		JLabel txareaCodigoProduto = new JLabel("Cod. Produto:");
+		JLabel txareaQtdProduto = new JLabel("Qtd:");
+		JLabel txareaValorTotal = new JLabel("Total:");
+		
+		jVenda.setLayout(null);
+		jVenda.setBounds(10, 100, 800, 600);
+		jVenda.setBackground(new Color(128,128,128));
+		
+		JTextField txCodigoProduto = new JTextField(20);
+		JTextField txQtdProduto = new JTextField(20);
+		JTextField txValorTotal = new JTextField(20);
+		
+		txCodigoProduto.setText("");
+		txQtdProduto.setText("");
+		txValorTotal.setText("");
+		
+		JButton btregistrarVenda = new JButton(""); //Falta a acao dele tb
+		JButton btlimpar = new JButton("limpar");
+		
+		
+		btregistrarVenda.setBounds(200, 310, 100, 20);
+		btlimpar.setBounds(400, 310, 100, 20);
+		
+		//campos para preeencher
+		txCodigoProduto.setBounds(200, 80, 300, 20);
+		txCodigoProduto.setToolTipText("Codigo Produto:");
+		txQtdProduto.setBounds(200, 120, 300, 20);
+		txQtdProduto.setToolTipText("Qtd Produto");
+		txValorTotal.setBounds(200, 250, 300, 20);
+		txValorTotal.setToolTipText("Valor da Compra");
+		
+		//indicacoes dos campos
+		txareaCodigoProduto.setBounds(100, 73, 300, 35);
+		txareaQtdProduto.setBounds(150, 120, 300, 30);
+		txareaValorTotal.setBounds(150, 250, 300, 30);
+		//cores
+		
+		//cores
+		txareaCodigoProduto.setForeground(Color.BLACK);
+		txareaQtdProduto.setForeground(Color.BLACK);
+		txareaValorTotal.setForeground(Color.BLACK);
+		
+		
+		jVenda.add(jTitulo);
+		jVenda.add(txCodigoProduto);
+		jVenda.add(txQtdProduto);
+		jVenda.add(txValorTotal);
+		
+		jVenda.add(txareaCodigoProduto);
+		jVenda.add(txareaQtdProduto);
+		jVenda.add(txareaValorTotal);
 
+		
+		
+		
+		return jVenda;
+	}
+	
+	
+	
 	public JPanel mudarParaRegistro(){
 		
 		
@@ -62,7 +157,7 @@ public class Jpanels extends JFrame{
 		
 		jRegistro.setLayout(null);
 		jRegistro.setBounds(10, 100, 800, 600);
-		jRegistro.setBackground(new Color(102,102,51));
+		jRegistro.setBackground(new Color(128,128,128));
 		
 		//textfield
 		JTextField txCodigo = new JTextField(20);
@@ -136,7 +231,7 @@ public class Jpanels extends JFrame{
 						produto.setNome(txNome.getText());
 						produto.setDescricao(txDescricao.getText());
 						produto.setPreco(new Float(txValor.getText()).floatValue());
-						JOptionPane.showMessageDialog(null, "OBRIGADO POR USAR O PROGRAMA");
+						JOptionPane.showMessageDialog(null, "PRODUTO CADASTRADO");
 						
 					}else{
 						JOptionPane.showMessageDialog(null, "POR FAVOR, PREENCHA TODOS OS CAMPOS");
@@ -166,6 +261,7 @@ public class Jpanels extends JFrame{
 		
 		return jRegistro;
 	}
+	
 	public JPanel mudarParaMenu(){
 		JLabel jTitulo = new JLabel("MENU PRINCIPAL");
 		jTitulo.setBounds(300, 0, 200, 20);
@@ -179,7 +275,7 @@ public class Jpanels extends JFrame{
 		
 		jMenuPrincpal.setLayout(null);
 		jMenuPrincpal.setBounds(10, 100, 800, 600);
-		jMenuPrincpal.setBackground(new Color(102, 102, 51));
+		jMenuPrincpal.setBackground(new Color(128,128,128));
 		
 		
 		JButton btvenda = new JButton("Venda");
@@ -275,7 +371,109 @@ public class Jpanels extends JFrame{
 		
 		return jMenuPrincpal;
 	}
-	
+public JPanel mudarParaConsulta() {
+		
+		JLabel jTitulo =  new JLabel("CONSULTA");
+		jTitulo.setBounds(300, 0, 200, 20);
+		jTitulo.setFont(font);
+		jTitulo.setForeground(Color.BLACK);
+		jTitulo.setToolTipText("CONSULTA");
+		
+		JLabel txareaCodigo = new JLabel("Codigo:");
+		
+		jConsulta.setLayout(null);
+		jConsulta.setBounds(10, 100, 800, 600);
+		jConsulta.setBackground(new Color(128,128,128));
+		
+		
+		JButton btconsultar = new JButton("Consultar");
+		
+		
+		JTextField txCodigo = new JTextField(20);
+		txCodigo.setText("");
+		
+		//botoes de radio
+		JRadioButtonMenuItem rbProduto = new JRadioButtonMenuItem("Produto", false);
+		rbProduto.setBounds(200, 100, 75, 15);
+		rbProduto.setBackground(null);
+		rbProduto.setForeground(Color.BLACK);
+		
+		rbProduto.setActionCommand("rbproduto");
+
+		JRadioButtonMenuItem rbVenda = new JRadioButtonMenuItem("Venda", false);
+		rbVenda.setBounds(350, 100, 75, 15);
+		rbVenda.setBackground(null);
+		rbVenda.setForeground(Color.BLACK);
+		
+		/*
+		 * Controle dos botoes de radio
+		 * recomendado usar grupo de butoes porem nao domino a tecnica ainda
+		 */
+		rbProduto.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(rbProduto.isSelected())
+					rbVenda.setSelected(false);;
+					
+			}
+		});
+		
+		rbVenda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(rbVenda.isSelected()){
+					rbProduto.setSelected(false);
+				}
+				
+			}
+		});
+		
+		//area para colcoar o codigo
+		txareaCodigo.setForeground(Color.BLACK);
+		txareaCodigo.setBounds(150, 150, 300, 15);
+		
+		txCodigo.setBounds(200, 145, 300, 20);
+		txCodigo.setToolTipText("Codigo");
+		
+		
+		btconsultar.setBounds(250, 177, 200, 20);
+		
+		btconsultar.setActionCommand("consultar");
+		
+		btconsultar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(rbProduto.isSelected() && !txCodigo.getText().equals("")){
+					consulta = "produtos/"+ txCodigo.getText();
+				}else if(rbVenda.isSelected() && !txCodigo.getText().equals("")){
+					consulta = "vendas/" + txCodigo.getText();
+				}else if(txCodigo.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "POR FAVOR! DIGITE O CODIGO ");
+				}else{
+					JOptionPane.showMessageDialog(null, "POR FAVOR! SELECIONE O TIPO DE CONSULTA");
+				}
+				
+				
+			}
+		});
+		
+		
+		
+		jConsulta.add(jTitulo);
+		jConsulta.add(txCodigo);
+		jConsulta.add(txareaCodigo);
+		jConsulta.add(btconsultar);
+		jConsulta.add(rbProduto);
+		jConsulta.add(rbVenda);
+		
+		
+		
+		
+		return jConsulta;
+	}
 	
 
 }

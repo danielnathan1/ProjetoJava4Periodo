@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class Produto implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private int codigo;
 	private String nome;
 	private String descricao;
@@ -18,7 +20,14 @@ public class Produto implements Serializable {
 		
 	}
 	
-	
+	public String mostrarProduto(){
+		String retorno = null;
+		
+		retorno = "Codigo: " + String.valueOf(this.codigo) + "\nNome:" + this.nome + "\nDescricao:" + this.descricao + "\nPreco" + String.valueOf(preco);
+		
+		
+		return retorno;
+	}
 	
 	public int getCodigo() {
 		return codigo;

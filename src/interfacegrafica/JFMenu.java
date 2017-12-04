@@ -1,5 +1,6 @@
 package interfacegrafica;
 
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -27,7 +28,8 @@ public class JFMenu extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 			//o frame poderar ser visto
 		setVisible(true);
-			//o frame n podera ser redimensionado
+			//
+		
 		setResizable(true);
 			//centralizar a pagina
 		setLocationRelativeTo(null);
@@ -39,14 +41,14 @@ public class JFMenu extends JFrame{
 		
 		 c = this.getContentPane();
 		 c.setLayout(null);
-		 c.setBackground(new Color(102, 102, 51));
+		 c.setBackground(new Color(128,128,128));
 		 
 		
 	}
 	public void mudarPanel(Container c, JPanel novoPanel){
 		c = this.getContentPane();
 		c.setLayout(null);
-		c.setBackground(new Color(102, 102, 51));
+		c.setBackground(new Color(128,128,128));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		c.removeAll();
 		c.add(novoPanel);

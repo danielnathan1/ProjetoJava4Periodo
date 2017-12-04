@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import produtos.*;
 
-public class Vendas {
+public class Venda{
 	
 	private int notafiscal;
 	private Date data;
