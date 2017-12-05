@@ -3,6 +3,9 @@ package principal;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.swing.JOptionPane;
+
 import produtos.*;
 
 public class Venda implements Serializable{
@@ -19,7 +22,12 @@ public class Venda implements Serializable{
 		
 		
 		for(Produto produto: produtos){
-			retorno += "\n" +"Nome: " + produto.getNome() + "    preco:R$"+ produto.preco;
+			try {
+				retorno += "\n" +"Nome: " + produto.getNome() + "    preco:R$"+ produto.preco;
+			} catch (NullPointerException e) {
+				JOptionPane.showMessageDialog(null, "UM PRODUTO NULLO FOI ADICIONADO A VENDA");
+			}
+			
 			
 		}
 		

@@ -1,13 +1,15 @@
 package interfacegrafica;
 
 import java.awt.Color;
-
-
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -98,7 +100,7 @@ public class Jpanels extends JFrame{
 
 		jVenda.setLayout(null);
 		jVenda.setBounds(10, 100, 800, 600);
-		jVenda.setBackground(new Color(128,128,128));
+		jVenda.setBackground(new Color(173,216,230));
 		
 		
 		//titulo
@@ -114,6 +116,7 @@ public class Jpanels extends JFrame{
 		JLabel txareaCodigoProduto = new JLabel("Codigo:");
 		JLabel txareaqtd= new JLabel("Quantidade:");
 		JLabel txareaValorTotal = new JLabel("Valor Total:");
+		JLabel txareaGif = new JLabel("");
 		
 		//botoes
 		JButton btAumentar = new JButton("+");
@@ -130,7 +133,7 @@ public class Jpanels extends JFrame{
 		
 		//campos para preeencher
 			//codigo
-		txCodigoProduto.setBounds(200, 80, 300, 20);
+		txCodigoProduto.setBounds(200, 80, 200, 20);
 		txCodigoProduto.setToolTipText("Codigo Produto");
 		
 			//quantidade
@@ -149,6 +152,9 @@ public class Jpanels extends JFrame{
 		txareaCodigoProduto.setBounds(150, 80, 300, 20);
 		txareaqtd.setBounds(130, 120, 300, 20);
 		txareaValorTotal.setBounds(130, 160, 300, 20);
+		txareaGif.setBounds(500,80,200,120);
+		txareaGif.setIcon(new ImageIcon("C:\\Users\\danie\\Documents\\faculdade\\P4\\Java avancado\\Mercado\\src\\interfacegrafica\\imagens\\teste.gif"));
+		
 		
 		//BOTOES
 		btAumentar.setBounds(300, 120, 50, 20);
@@ -229,6 +235,7 @@ public class Jpanels extends JFrame{
 		jVenda.add(txareaCodigoProduto);
 		jVenda.add(txareaqtd);
 		jVenda.add(txareaValorTotal);
+		jVenda.add(txareaGif);
 		
 		jVenda.add(txCodigoProduto);
 		jVenda.add(txqtd);
@@ -265,7 +272,7 @@ public class Jpanels extends JFrame{
 		
 		jRegistro.setLayout(null);
 		jRegistro.setBounds(10, 100, 800, 600);
-		jRegistro.setBackground(new Color(128,128,128));
+		jRegistro.setBackground(new Color(173,216,230));
 		
 		//textfield
 		JTextField txCodigo = new JTextField(20);
@@ -383,18 +390,25 @@ public class Jpanels extends JFrame{
 		
 		jMenuPrincpal.setLayout(null);
 		jMenuPrincpal.setBounds(10, 100, 800, 600);
-		jMenuPrincpal.setBackground(new Color(128,128,128));
+		jMenuPrincpal.setBackground(new Color(173,216,230));
 		
 		
-		JButton btvenda = new JButton("Venda");
-		JButton btresgitro = new JButton("Registro");
-		JButton btconsulta = new JButton("Consulta");
-		JButton btsair = new JButton("Sair");
+		JButton btvenda = new JButton("VENDA  ");
+		btvenda.setIcon(new ImageIcon("C:\\Users\\danie\\Documents\\faculdade\\P4\\Java avancado\\Mercado\\src\\interfacegrafica\\imagens\\venda.png"));
 		
-		btvenda.setBounds(20, 140, 100, 30);
-		btresgitro.setBounds(20, 180, 100, 30);
-		btconsulta.setBounds(20, 220, 100, 30);
-		btsair.setBounds(20, 410, 100, 30);
+		JButton btresgitro = new JButton("REGISTRO");
+		btresgitro.setIcon(new ImageIcon("C:\\Users\\danie\\Documents\\faculdade\\P4\\Java avancado\\Mercado\\src\\interfacegrafica\\imagens\\registro.png"));
+		
+		JButton btconsulta = new JButton("CONSULTA");
+		btconsulta.setIcon(new ImageIcon("C:\\Users\\danie\\Documents\\faculdade\\P4\\Java avancado\\Mercado\\src\\interfacegrafica\\imagens\\consulta.png"));
+		
+		JButton btsair = new JButton("SAIR");
+		btsair.setIcon(new ImageIcon("C:\\Users\\danie\\Documents\\faculdade\\P4\\Java avancado\\Mercado\\src\\interfacegrafica\\imagens\\sair.png"));
+		
+		btvenda.setBounds(20, 140, 150, 40);
+		btresgitro.setBounds(20, 205, 150, 40);
+		btconsulta.setBounds(20, 265, 150, 40);
+		btsair.setBounds(20, 410, 150, 40);
 		
 		btvenda.setActionCommand("venda");
 		btresgitro.setActionCommand("registro");
@@ -491,7 +505,7 @@ public class Jpanels extends JFrame{
 		
 		jConsulta.setLayout(null);
 		jConsulta.setBounds(10, 100, 800, 600);
-		jConsulta.setBackground(new Color(128,128,128));
+		jConsulta.setBackground(new Color(173,216,230));
 		
 		
 		JButton btconsultar = new JButton("Consultar");

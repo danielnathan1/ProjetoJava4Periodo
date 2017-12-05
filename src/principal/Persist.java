@@ -8,6 +8,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import javax.swing.JOptionPane;
+
 
 
 public class Persist {
@@ -48,6 +50,7 @@ public class Persist {
 			
 			
 		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "ARQUIVO NÃO ENCONTRADO, TENTE NOVAMENTE");
 			System.out.println("ERRO: O Arquivo Nao foi Encontrado");
 			
 		} catch (IOException e) {

@@ -4,6 +4,8 @@ package interfacegrafica;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.image.BufferedImage;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +17,8 @@ import javax.swing.JPanel;
 public class JFMenu extends JFrame{
 	
 	private JPanel panel = new JPanel();
-	private JButton btvenda, btresgitro, btconsulta, btsair;
+	BufferedImage imagemfundo;
+	
 	public JFMenu(Container c){
 		//titulo
 		super("MERCADO");
@@ -28,7 +31,7 @@ public class JFMenu extends JFrame{
 		setVisible(true);
 			//
 		
-		setResizable(true);
+		setResizable(false);
 			//centralizar a pagina
 		setLocationRelativeTo(null);
 			//icone
@@ -36,17 +39,16 @@ public class JFMenu extends JFrame{
 		setIconImage(icone.getImage());
 		
 		//conteiner
-		
 		 c = this.getContentPane();
 		 c.setLayout(null);
-		 c.setBackground(new Color(128,128,128));
+		 c.setBackground(new Color(173,216,230));
 		 
 		
 	}
 	public void mudarPanel(Container c, JPanel novoPanel){
 		c = this.getContentPane();
 		c.setLayout(null);
-		c.setBackground(new Color(128,128,128));
+		c.setBackground(new Color(173,216,230));
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		c.removeAll();
 		c.add(novoPanel);

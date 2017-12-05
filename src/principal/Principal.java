@@ -17,6 +17,10 @@ import produtos.Produto;
 public class Principal {
 	public static void main(String[] args) throws UnsupportedEncodingException {
 			
+			//imagem
+			
+			
+		
 			String controleDeSwi = "1";
 			
 			//manipuladordedados
@@ -35,7 +39,7 @@ public class Principal {
 			//container
 			Container c = new Container();
 			c.setBounds(10, 100, 800, 600);
-			c.setBackground(new Color(128,128,128));
+			c.setBackground(new Color(173,216,230));
 			c.setLocation(0,0);
 			
 			//para gerar os paines
@@ -47,9 +51,11 @@ public class Principal {
 			frame.add(c);
 			
 			
+			
+			
 			while(controleDeSwi == "1"){
 				frame.repaint();
-				System.out.println(paineis.getControle());
+				System.out.println("");
 				
 				paineis.consulta="";
 				paineis.quantide=0;
@@ -67,14 +73,17 @@ public class Principal {
 							
 							venda = paineis.venda;
 							consulta = paineis.consulta;
-							System.out.println(paineis.venda.getData());
+							System.out.println("");
 							
 							if(venda.getData()!=null){
 								manipularDados.salvarObjeto(venda, "vendas/" + venda.getData());
 								JOptionPane.showMessageDialog(null, venda.mostrarVenda());
 							}	
 						}
-					break;
+						frame.mudarPanel(c, paineis.mudarParaMenu());
+						paineis.controle = null;
+						controleDeSwi = "1";
+						break;
 					
 					case "registro":
 						System.out.println("");
@@ -113,13 +122,21 @@ public class Principal {
 						
 						while(consulta == ""){
 							consulta = paineis.getConsulta();
-							System.out.println(consulta);
+							System.out.println("");
 							if(consulta!= ""){
 								letra = consulta.charAt(0);
 								if(letra == 'v'){
 									vendatemporaria = (Venda)manipularDados.lerObjeto(consulta);
+									if(vendatemporaria==null){
+										
+										
+									}
+									JOptionPane.showMessageDialog(null, vendatemporaria.mostrarVenda());
 								}else if(letra == 'p'){
 									produtotemporario =(Produto) manipularDados.lerObjeto(consulta);
+									if(produtotemporario== null){
+										produtotemporario=(Produto) manipularDados.lerObjeto("produtos/100");
+									}
 									JOptionPane.showMessageDialog(null, produtotemporario.mostrarProduto());
 								}
 								
