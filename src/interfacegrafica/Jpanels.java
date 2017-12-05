@@ -15,13 +15,21 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import principal.GerarHora;
+import principal.Persist;
+import principal.Venda;
 import produtos.Produto;
 
 
 public class Jpanels extends JFrame{
+	
+	//controle de dados
+	Persist persist = new Persist();
+	
 	
 	//fonte padrao
 	public Font font = new Font("ARIAL", Font.BOLD, 20);
@@ -35,11 +43,16 @@ public class Jpanels extends JFrame{
 	
 	//variavel de controle de troca de telas
 	public String controle;
+	
 	//objetos que irao retornar
 	public Produto produto = new Produto();
+	public Venda venda = new Venda();
 	
 	//dado de consulta
 	public String consulta = "";
+	public int quantide = 0;
+	float valortotal1 = 0;
+	public GerarHora geradorhora = new GerarHora();
 	
 	
 	
@@ -49,6 +62,16 @@ public class Jpanels extends JFrame{
 	
 	public String getControle() {
 		return controle;
+	}
+
+
+	public int getQuantide() {
+		return quantide;
+	}
+
+
+	public void setQuantidde(int quantide) {
+		this.quantide = quantide;
 	}
 
 
@@ -72,68 +95,153 @@ public class Jpanels extends JFrame{
 	
 	public JPanel mudarParaVenda() {
 		
+
+		jVenda.setLayout(null);
+		jVenda.setBounds(10, 100, 800, 600);
+		jVenda.setBackground(new Color(128,128,128));
+		
+		
+		//titulo
 		JLabel jTitulo = new JLabel("VENDA");
 		jTitulo.setBounds(300, 0, 200, 20);
 		jTitulo.setFont(font);
 		jTitulo.setForeground(Color.BLACK);
 		jTitulo.setToolTipText("VENDA");
 		
-		JLabel txareaCodigoProduto = new JLabel("Cod. Produto:");
-		JLabel txareaQtdProduto = new JLabel("Qtd:");
-		JLabel txareaValorTotal = new JLabel("Total:");
 		
-		jVenda.setLayout(null);
-		jVenda.setBounds(10, 100, 800, 600);
-		jVenda.setBackground(new Color(128,128,128));
 		
+		//labels
+		JLabel txareaCodigoProduto = new JLabel("Codigo:");
+		JLabel txareaqtd= new JLabel("Quantidade:");
+		JLabel txareaValorTotal = new JLabel("Valor Total:");
+		
+		//botoes
+		JButton btAumentar = new JButton("+");
+		JButton btDiminuir = new JButton("-");
+		JButton btAdd = new JButton("add");
+		JButton btregistrarVenda = new JButton("registrar");
+		
+		
+		//campos a serem preenchidos
 		JTextField txCodigoProduto = new JTextField(20);
-		JTextField txQtdProduto = new JTextField(20);
+		JTextField txqtd= new JTextField(20);
 		JTextField txValorTotal = new JTextField(20);
 		
-		txCodigoProduto.setText("");
-		txQtdProduto.setText("");
-		txValorTotal.setText("");
-		
-		JButton btregistrarVenda = new JButton(""); //Falta a acao dele tb
-		JButton btlimpar = new JButton("limpar");
-		
-		
-		btregistrarVenda.setBounds(200, 310, 100, 20);
-		btlimpar.setBounds(400, 310, 100, 20);
 		
 		//campos para preeencher
+			//codigo
 		txCodigoProduto.setBounds(200, 80, 300, 20);
-		txCodigoProduto.setToolTipText("Codigo Produto:");
-		txQtdProduto.setBounds(200, 120, 300, 20);
-		txQtdProduto.setToolTipText("Qtd Produto");
-		txValorTotal.setBounds(200, 250, 300, 20);
-		txValorTotal.setToolTipText("Valor da Compra");
+		txCodigoProduto.setToolTipText("Codigo Produto");
 		
-		//indicacoes dos campos
-		txareaCodigoProduto.setBounds(100, 73, 300, 35);
-		txareaQtdProduto.setBounds(150, 120, 300, 30);
-		txareaValorTotal.setBounds(150, 250, 300, 30);
-		//cores
+			//quantidade
+		txqtd.setBounds(260, 120, 30, 20);
+		txqtd.setForeground(Color.BLACK);
+		txqtd.setText("0");
+		txqtd.setEnabled(false);
+		
+		
+		txValorTotal.setBounds(200, 160, 150, 20);
+		txValorTotal.setToolTipText("Valor da Compra");
+		txValorTotal.setEnabled(false);
+		
+		
+		//textos
+		txareaCodigoProduto.setBounds(150, 80, 300, 20);
+		txareaqtd.setBounds(130, 120, 300, 20);
+		txareaValorTotal.setBounds(130, 160, 300, 20);
+		
+		//BOTOES
+		btAumentar.setBounds(300, 120, 50, 20);
+		btDiminuir.setBounds(200, 120, 50, 20);
+		btAdd.setBounds(200, 200, 90, 20);
+		btregistrarVenda.setBounds(300, 200, 90, 20);
 		
 		//cores
 		txareaCodigoProduto.setForeground(Color.BLACK);
-		txareaQtdProduto.setForeground(Color.BLACK);
+		txareaqtd.setForeground(Color.BLACK);
 		txareaValorTotal.setForeground(Color.BLACK);
+		
+		//ouvintes
+		
+		btAumentar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int x = Integer.parseInt(txqtd.getText());
+				x+=1;
+				txqtd.setText(String.valueOf(x));
+				
+			}
+		});
+		
+		btDiminuir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int x = Integer.parseInt(txqtd.getText());
+				if(x>0){
+					x-=1;
+					txqtd.setText(String.valueOf(x));
+				}else
+					JOptionPane.showMessageDialog(null, "A QUANTIDADE DEVE SER MAIOR QUE 0");
+				
+				
+			}
+		});
+		btAdd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(!txCodigoProduto.getText().equals("")){
+					if(Integer.parseInt(txqtd.getText())>0 && !txCodigoProduto.getText().equals("")){
+						int x=0;
+						for(x=0; Integer.parseInt(txqtd.getText())>=x; x++){
+							Produto produtoTemporario1 = (Produto)persist.lerObjeto("produtos/" + txCodigoProduto.getText());
+							venda.produtos.add(produtoTemporario1);
+							valortotal1+= produtoTemporario1.getPreco();
+						}
+						JOptionPane.showMessageDialog(null, "PRODUTO ADICIONADO:\n");
+						txValorTotal.setText(String.valueOf(valortotal1));
+						venda.setValorTotal(valortotal1);
+						
+					}else if((Integer.parseInt(txqtd.getText())==0) || !txCodigoProduto.getText().equals("")){
+						JOptionPane.showMessageDialog(null, "CAMPO NAO PREENCHIDO");
+					}
+				}
+				
+			}
+		});
+		btregistrarVenda.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(venda!=null){
+					venda.setData(geradorhora.gerador());
+				}
+				
+			}
+		});
+		
+		
 		
 		
 		jVenda.add(jTitulo);
-		jVenda.add(txCodigoProduto);
-		jVenda.add(txQtdProduto);
-		jVenda.add(txValorTotal);
-		
 		jVenda.add(txareaCodigoProduto);
-		jVenda.add(txareaQtdProduto);
+		jVenda.add(txareaqtd);
 		jVenda.add(txareaValorTotal);
-
 		
+		jVenda.add(txCodigoProduto);
+		jVenda.add(txqtd);
+		jVenda.add(txValorTotal);
+
+		jVenda.add(btAumentar);
+		jVenda.add(btDiminuir);
+		jVenda.add(btAdd);
+		jVenda.add(btregistrarVenda);
 		
 		
 		return jVenda;
+		
 	}
 	
 	
@@ -371,7 +479,7 @@ public class Jpanels extends JFrame{
 		
 		return jMenuPrincpal;
 	}
-public JPanel mudarParaConsulta() {
+	public JPanel mudarParaConsulta() {
 		
 		JLabel jTitulo =  new JLabel("CONSULTA");
 		jTitulo.setBounds(300, 0, 200, 20);

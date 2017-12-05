@@ -5,6 +5,9 @@ import java.io.Serializable;
 import java.awt.Color;
 import java.awt.Container;
 import java.io.UnsupportedEncodingException;
+import java.net.PasswordAuthentication;
+
+import javax.lang.model.element.QualifiedNameable;
 import javax.swing.JOptionPane;
 import interfacegrafica.JFMenu;
 import interfacegrafica.Jpanels;
@@ -23,6 +26,10 @@ public class Principal {
 			
 			//produto a ser salvo
 			Produto p = new Produto();
+			
+			//venda a ser salva
+			Venda venda = new Venda();
+			venda.setData(null);
 		
 			
 			//container
@@ -44,19 +51,33 @@ public class Principal {
 				frame.repaint();
 				System.out.println(paineis.getControle());
 				
+				paineis.consulta="";
+				paineis.quantide=0;
+				
 				if(paineis.getControle()!= null){
 					controleDeSwi = "0";
 					switch (paineis.getControle()) {
 					
+					//venda
 					case "venda":
 						frame.mudarPanel(c, paineis.mudarParaVenda());
 						frame.repaint();
-						while(paineis.getControle()=="venda"){
+						
+						while(venda.getData()== null){
 							
+							venda = paineis.venda;
+							consulta = paineis.consulta;
+							System.out.println(paineis.venda.getData());
+							
+							if(venda.getData()!=null){
+								manipularDados.salvarObjeto(venda, "vendas/" + venda.getData());
+								JOptionPane.showMessageDialog(null, venda.mostrarVenda());
+							}	
 						}
+					break;
 					
 					case "registro":
-						System.out.println("a");
+						System.out.println("");
 						p.limparProduto();
 						
 						System.out.println("");
@@ -108,8 +129,6 @@ public class Principal {
 						frame.mudarPanel(c, paineis.mudarParaMenu());
 						paineis.controle = null;
 						controleDeSwi = "1";
-
-						
 						break;
 	
 					default:

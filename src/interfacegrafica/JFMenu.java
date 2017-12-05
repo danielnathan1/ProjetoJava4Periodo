@@ -16,8 +16,6 @@ public class JFMenu extends JFrame{
 	
 	private JPanel panel = new JPanel();
 	private JButton btvenda, btresgitro, btconsulta, btsair;
-	private JLabel lbTitulo;
-	
 	public JFMenu(Container c){
 		//titulo
 		super("MERCADO");

@@ -1,45 +1,52 @@
 package principal;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import produtos.*;
 
-public class Venda{
-	
-	private int notafiscal;
-	private Date data;
-	private ArrayList<Produto> produtos = new ArrayList<>();
+public class Venda implements Serializable{
 	
 	
-	public void fazendoVenda(){
+	private static final long serialVersionUID = 1L;
+	private String data;
+	public ArrayList<Produto> produtos = new ArrayList<>();
+	public float valorTotal;
+	
+	public String mostrarVenda(){
+		String retorno = "";
+		retorno = "DADOS DA COMPRA\n\n" + "DATA/ID DA COMPRA: " + this.data + "\nPRODUTOS DA COMPRA\n";
 		
-		Produto p = new Produto();
 		
+		for(Produto produto: produtos){
+			retorno += "\n" +"Nome: " + produto.getNome() + "    preco:R$"+ produto.preco;
+			
+		}
 		
-		produtos.add(p);
+		retorno+= "\n\nVALOR TOTAL:R$ " + this.valorTotal;
 		
-		System.out.println("");
-		
-		/*
-		 * if()
-		 * 		fazendoVenda(Produto p);
-		 */
-		
+		return retorno;
 	}
 	
 	
-	
-	public int getNotafiscal() {
-		return notafiscal;
+
+	public float getValorTotal() {
+		return valorTotal;
 	}
-	public void setNotafiscal(int notafiscal) {
-		this.notafiscal = notafiscal;
+
+
+
+	public void setValorTotal(float valorTotal) {
+		this.valorTotal = valorTotal;
 	}
-	public Date getData() {
+
+
+
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
-		this.data = data;
+	public void setData(String string) {
+		this.data = string;
 	}
 	public ArrayList<Produto> getProdutos() {
 		return produtos;

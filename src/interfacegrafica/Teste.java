@@ -20,6 +20,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JProgressBar;
 import javax.swing.JFormattedTextField;
 import java.awt.Button;
+import javax.swing.JSpinner;
 
 public class Teste extends JFrame {
 
@@ -42,6 +43,8 @@ public class Teste extends JFrame {
 		
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("New radio button");
 		rdbtnNewRadioButton_1.setForeground(SystemColor.inactiveCaption);
+		
+		JSpinner spinner = new JSpinner();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -57,7 +60,10 @@ public class Teste extends JFrame {
 							.addComponent(rdbtnNewRadioButton_1))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(137)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(102)
+							.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(114, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
@@ -71,7 +77,9 @@ public class Teste extends JFrame {
 					.addComponent(textPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addGap(40)
 					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(242, Short.MAX_VALUE))
+					.addGap(44)
+					.addComponent(spinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(178, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
